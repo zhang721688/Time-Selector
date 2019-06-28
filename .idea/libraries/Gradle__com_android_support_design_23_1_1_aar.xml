@@ -1,17 +1,17 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:design:23.1.1@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/853660176639760f19397b44d98f698c/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/a71e418cf9d2a0ebf9e6192c854d1bc4/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/853660176639760f19397b44d98f698c/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/853660176639760f19397b44d98f698c/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/a71e418cf9d2a0ebf9e6192c854d1bc4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-23.1.1.aar/a71e418cf9d2a0ebf9e6192c854d1bc4/res" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://E:/ZxnProgram/Android/sdk/sdk_as/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-javadoc.jar!/" />
+      <root url="jar://C:/ZxnProgram/Android/Sdk/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://E:/ZxnProgram/Android/sdk/sdk_as/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-sources.jar!/" />
+      <root url="jar://C:/ZxnProgram/Android/Sdk/extras/android/m2repository/com/android/support/design/23.1.1/design-23.1.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
