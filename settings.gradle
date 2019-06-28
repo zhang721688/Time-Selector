@@ -1,1 +1,1 @@
-include ':app', ':timeselector'
+include ':app', ':time-selector'
