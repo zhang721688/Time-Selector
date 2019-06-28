@@ -1,7 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
-version = "1.1.1"
 
 android {
     compileSdkVersion 22
@@ -10,7 +7,7 @@ android {
         minSdkVersion 11
         targetSdkVersion 22
         versionCode 12
-        versionName "1.1.1"
+        versionName "1.0.0"
     }
     buildTypes {
         release {
@@ -19,20 +16,44 @@ android {
         }
     }
 }
-
-
-def siteUrl = 'https://github.com/mrfluency/Time-Selector'
-def gitUrl = 'https://github.com/mrfluency/Time-Selector.git'
-
-group = "com.feezu.liuli"
-
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:22.1.1'
+}
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+def siteUrl = 'https://github.com/zhang721688/Time-Selector'//TODO:修改仓库Time-Selector
+def gitUrl = 'https://github.com/zhang721688/Time-Selector.git'//TODO:修改仓库Time-Selector
+def libName = "time-selector"//TODO:修改依赖time-selector
+group = "com.xm.zxn.timeselector"//TODO:修改包名com.xm.zxn.timeselector
+version = "1.0.0"
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+task copyDoc(type: Copy) {
+    from "${buildDir}/docs/"
+    into "docs"
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
 install {
     repositories.mavenInstaller {
-
         pom {
             project {
                 packaging 'aar'
-                name 'Time-Selector'
+                name 'desc content'
                 url siteUrl
                 licenses {
                     license {
@@ -42,9 +63,9 @@ install {
                 }
                 developers {
                     developer {
-                        id 'liuli'
-                        name 'liuli'
-                        email 'mrfluency@163.com'
+                        id 'zxn'
+                        name 'ZhangXiaoNing'
+                        email 'zxn13716071676@sina.com'
                     }
                 }
                 scm {
@@ -56,28 +77,6 @@ install {
         }
     }
 }
-
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives javadocJar
-    archives sourcesJar
-}
-
-
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 bintray {
@@ -85,19 +84,21 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
     pkg {
-        repo = "maven"
-        name = "Time-Selector"
+        repo = "Time-Selector"
+        name = libName
+        desc = 'desc content'
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
         publish = true
     }
 }
-
-
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:22.1.1'
+javadoc {
+    options {
+        encoding "UTF-8"
+        charSet 'UTF-8'
+        author true
+        version true
+        links "http://docs.oracle.com/javase/7/docs/api"
+    }
 }
