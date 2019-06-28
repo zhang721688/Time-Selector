@@ -13,7 +13,7 @@
 使用：
 >Android Studio中直接在 gradle中加入：
 ```javascript
-compile 'com.feezu.liuli:timeselector:1.1.3+' 
+compile 'com.xm.zxn.timeselector:time-selector:1.0.0'
 ```
 >Eclipse下请下载源码（建议尽早迁移至Studio）
 

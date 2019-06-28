@@ -11,7 +11,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.feezu.zxn.timeselector.R;
 
 import com.xm.zxn.timeselector.utils.DateUtil;
 import com.xm.zxn.timeselector.utils.ScreenUtil;

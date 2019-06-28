@@ -13,8 +13,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-
-import org.feezu.zxn.timeselector.R;
+import com.xm.zxn.timeselector.R;
 
 import java.util.ArrayList;
 import java.util.List;
