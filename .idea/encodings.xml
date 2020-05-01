@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/time-selector/build/.transforms/3cbb8a611f453931f6ba6fce8edd9faa/classes/classes.dex" charset="GBK" />
     <file url="file://$PROJECT_DIR$/time-selector/src/main/java/com/xm/zxn/timeselector/TimeSelector.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/time-selector/src/main/java/com/xm/zxn/timeselector/utils/DateUtil.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/time-selector/src/main/java/com/xm/zxn/timeselector/utils/ScreenUtil.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/time-selector/src/main/java/com/xm/zxn/timeselector/utils/TextUtil.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/time-selector/src/main/java/com/xm/zxn/timeselector/view/PickerView.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/time-selector/src/main/java/org/feezu/zxn/timeselector/utils" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

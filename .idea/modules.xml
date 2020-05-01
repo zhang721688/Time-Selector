@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Time-Selector.iml" filepath="$PROJECT_DIR$/Time-Selector.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/time-selector/time-selector.iml" filepath="$PROJECT_DIR$/time-selector/time-selector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Time-Selector.iml" filepath="$PROJECT_DIR$/Time-Selector.iml" group="Time-Selector" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="Time-Selector/app" />
+      <module fileurl="file://$PROJECT_DIR$/time-selector/time-selector.iml" filepath="$PROJECT_DIR$/time-selector/time-selector.iml" group="Time-Selector/time-selector" />
     </modules>
   </component>
 </project>

@@ -11,30 +11,42 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.IntDef;
 
 import com.xm.zxn.timeselector.utils.DateUtil;
 import com.xm.zxn.timeselector.utils.ScreenUtil;
 import com.xm.zxn.timeselector.utils.TextUtil;
 import com.xm.zxn.timeselector.view.PickerView;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
+ * ClockSelector
  * Created by liuli on 2015/11/27.
  */
 public class TimeSelector {
 
-    public interface ResultHandler {
-        void handle(String time);
-    }
+    private TextView day_text;
+    private TextView month_text;
+    private TextView year_text;
+
+//    public interface ResultHandler {
+//        void handle(String time);
+//    }
 
     public enum SCROLLTYPE {
 
+        YEAR(5),
+        MONTH(4),
+        DAY(3),
         HOUR(1),
         MINUTE(2);
 
-        private SCROLLTYPE(int value) {
+
+        SCROLLTYPE(int value) {
             this.value = value;
         }
 
@@ -42,16 +54,43 @@ public class TimeSelector {
 
     }
 
-    public enum MODE {
-
-        YMD(1),
-        YMDHM(2);
-
-        private MODE(int value) {
-            this.value = value;
+    public int disScrollUnit(SCROLLTYPE... scrolltypes) {
+        if (scrolltypes == null || scrolltypes.length == 0)
+            scrollUnits = SCROLLTYPE.HOUR.value + SCROLLTYPE.MINUTE.value;
+        for (SCROLLTYPE scrolltype : scrolltypes) {
+            scrollUnits ^= scrolltype.value;
         }
+        return scrollUnits;
+    }
 
-        public int value;
+    public void setMode(@ModeType int mode) {
+        if (mode == YMD) {
+            disScrollUnit(SCROLLTYPE.HOUR, SCROLLTYPE.MINUTE);
+            hour_pv.setVisibility(View.GONE);
+            minute_pv.setVisibility(View.GONE);
+            hour_text.setVisibility(View.GONE);
+            minute_text.setVisibility(View.GONE);
+        } else if (mode == YMDHM) {
+            disScrollUnit();
+            hour_pv.setVisibility(View.VISIBLE);
+            minute_pv.setVisibility(View.VISIBLE);
+            hour_text.setVisibility(View.VISIBLE);
+            minute_text.setVisibility(View.VISIBLE);
+        } else if (mode == HM) {
+            disScrollUnit(SCROLLTYPE.YEAR,SCROLLTYPE.MONTH,SCROLLTYPE.DAY);
+
+            year_pv.setVisibility(View.GONE);
+            year_text.setVisibility(View.GONE);
+            month_pv.setVisibility(View.GONE);
+            month_text.setVisibility(View.GONE);
+            day_pv.setVisibility(View.GONE);
+            day_text.setVisibility(View.GONE);
+
+            hour_pv.setVisibility(View.VISIBLE);
+            minute_pv.setVisibility(View.VISIBLE);
+            hour_text.setVisibility(View.VISIBLE);
+            minute_text.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -147,6 +186,9 @@ public class TimeSelector {
         tv_cancle = (TextView) seletorDialog.findViewById(R.id.tv_cancle);
         tv_select = (TextView) seletorDialog.findViewById(R.id.tv_select);
         tv_title = (TextView) seletorDialog.findViewById(R.id.tv_title);
+        year_text = (TextView) seletorDialog.findViewById(R.id.yeat_text);
+        month_text = (TextView) seletorDialog.findViewById(R.id.month_text);
+        day_text = (TextView) seletorDialog.findViewById(R.id.day_text);
         hour_text = (TextView) seletorDialog.findViewById(R.id.hour_text);
         minute_text = (TextView) seletorDialog.findViewById(R.id.minute_text);
 
@@ -433,9 +475,9 @@ public class TimeSelector {
     }
 
     private void excuteScroll() {
-        year_pv.setCanScroll(year.size() > 1);
+        year_pv.setCanScroll(year.size() > 1 && (scrollUnits & SCROLLTYPE.YEAR.value) == SCROLLTYPE.YEAR.value);
         month_pv.setCanScroll(month.size() > 1);
-        day_pv.setCanScroll(day.size() > 1);
+        day_pv.setCanScroll(day.size() > 1 );
         hour_pv.setCanScroll(hour.size() > 1 && (scrollUnits & SCROLLTYPE.HOUR.value) == SCROLLTYPE.HOUR.value);
         minute_pv.setCanScroll(minute.size() > 1 && (scrollUnits & SCROLLTYPE.MINUTE.value) == SCROLLTYPE.MINUTE.value);
     }
@@ -597,34 +639,9 @@ public class TimeSelector {
         tv_title.setText(str);
     }
 
-    public int disScrollUnit(SCROLLTYPE... scrolltypes) {
-        if (scrolltypes == null || scrolltypes.length == 0)
-            scrollUnits = SCROLLTYPE.HOUR.value + SCROLLTYPE.MINUTE.value;
-        for (SCROLLTYPE scrolltype : scrolltypes) {
-            scrollUnits ^= scrolltype.value;
-        }
-        return scrollUnits;
-    }
 
-    public void setMode(MODE mode) {
-        switch (mode.value) {
-            case 1:
-                disScrollUnit(SCROLLTYPE.HOUR, SCROLLTYPE.MINUTE);
-                hour_pv.setVisibility(View.GONE);
-                minute_pv.setVisibility(View.GONE);
-                hour_text.setVisibility(View.GONE);
-                minute_text.setVisibility(View.GONE);
-                break;
-            case 2:
-                disScrollUnit();
-                hour_pv.setVisibility(View.VISIBLE);
-                minute_pv.setVisibility(View.VISIBLE);
-                hour_text.setVisibility(View.VISIBLE);
-                minute_text.setVisibility(View.VISIBLE);
-                break;
 
-        }
-    }
+
 
     public void setIsLoop(boolean isLoop) {
         this.year_pv.setIsLoop(isLoop);
@@ -632,5 +649,28 @@ public class TimeSelector {
         this.day_pv.setIsLoop(isLoop);
         this.hour_pv.setIsLoop(isLoop);
         this.minute_pv.setIsLoop(isLoop);
+    }
+
+    public static final int YMD = 1;
+    public static final int YMDHM = 2;
+    public static final int HM = 3;
+
+//    public enum MODE {
+//
+//        YMD(1),
+//        YMDHM(2),
+//        HM(3);
+//
+//        MODE(int value) {
+//            this.value = value;
+//        }
+//        public int value;
+//
+//    }
+
+    @IntDef({YMDHM, YMD, HM})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface ModeType {
+
     }
 }

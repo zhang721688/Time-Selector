@@ -17,7 +17,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
         android:onClick="show"
         android:padding="15dp"
         android:text="Click me"
@@ -34,6 +33,19 @@
         android:onClick="show"
         android:padding="15dp"
         android:text="Click 年月日"
+        android:textColor="@color/colorPrimary"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/tv_hm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ymd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:onClick="show"
+        android:padding="15dp"
+        android:text="Click 时分"
         android:textColor="@color/colorPrimary"
         android:textSize="21sp" />
 
