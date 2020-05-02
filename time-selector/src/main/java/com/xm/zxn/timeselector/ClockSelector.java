@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.xm.zxn.timeselector.utils.DateUtil;
 import com.xm.zxn.timeselector.utils.ScreenUtil;
 import com.xm.zxn.timeselector.view.PickerView;
+import com.zxn.time.SDFPattern;
+import com.zxn.time.StampUtils;
+import com.zxn.time.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,7 +24,7 @@ import java.util.Calendar;
 public class ClockSelector {
 
     private final int MAXMINUTE = 59;
-    private final String FORMAT_STR = "HH:mm";
+    private final String FORMAT_STR = "HH:mm";//HHmmss
 
     private Context mContext;
     private ResultHandler mResultHandler;
@@ -41,8 +44,6 @@ public class ClockSelector {
     public ClockSelector(Context context, ResultHandler resultHandler) {
         this.mContext = context;
         this.mResultHandler = resultHandler;
-        mCalender.set(Calendar.HOUR, 0);
-        mCalender.set(Calendar.MINUTE, 0);
         initDialog();
         initView();
     }
@@ -54,6 +55,7 @@ public class ClockSelector {
         tv_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //mResultHandler.handle(TimeUtils.stampToTime(mCalender.getTime().getTime(), SDFPattern.HHmm_SDF_C));
                 mResultHandler.handle(DateUtil.format(mCalender.getTime(), FORMAT_STR));
                 mClockDialog.dismiss();
             }
@@ -78,6 +80,9 @@ public class ClockSelector {
     public void show() {
         initTimer();
         addListener();
+
+        mCalender.set(Calendar.HOUR, 0);
+        mCalender.set(Calendar.MINUTE, 0);
         mClockDialog.show();
     }
 
@@ -99,7 +104,8 @@ public class ClockSelector {
         hour_pv.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
             public void onSelect(String text) {
-                mCalender.set(Calendar.HOUR, Integer.parseInt(text));
+                //.set(Calendar.HOUR, Integer.parseInt(text));
+                mCalender.set(Calendar.HOUR_OF_DAY, Integer.parseInt(text));
             }
         });
         minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
@@ -120,6 +126,7 @@ public class ClockSelector {
 
     private String fomatTimeUnit(int unit) {
         return unit < 10 ? "0" + String.valueOf(unit) : String.valueOf(unit);
+        //return String.valueOf(unit);
     }
 
     private void loadComponent() {
