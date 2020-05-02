@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
         //hmTimeSelector.setMode(TimeSelector.HM);//只显示 时分
-        hmTimeSelector.setIsLoop(false);
+        //hmTimeSelector.setIsLoop(false);
     }
 
     public void show(View v) {
