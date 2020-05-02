@@ -13,6 +13,7 @@
 使用：
 >Android Studio中直接在 gradle中加入：
 ```javascript
+compile 'com.xm.zxn.timeselector:time-selector:1.0.1'
 compile 'com.xm.zxn.timeselector:time-selector:1.0.0'
 ```
 构造1：
