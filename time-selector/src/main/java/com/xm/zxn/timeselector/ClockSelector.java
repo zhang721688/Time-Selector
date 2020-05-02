@@ -32,7 +32,7 @@ public class ClockSelector {
     private PickerView hour_pv;
     private PickerView minute_pv;
     private int startHour, startMininute;
-    private Calendar selectedCalender = Calendar.getInstance();
+    private Calendar mCalender = Calendar.getInstance();
 
     public ClockSelector(Context context) {
         this(context, null);
@@ -41,6 +41,8 @@ public class ClockSelector {
     public ClockSelector(Context context, ResultHandler resultHandler) {
         this.mContext = context;
         this.mResultHandler = resultHandler;
+        mCalender.set(Calendar.HOUR, 0);
+        mCalender.set(Calendar.MINUTE, 0);
         initDialog();
         initView();
     }
@@ -52,7 +54,7 @@ public class ClockSelector {
         tv_select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mResultHandler.handle(DateUtil.format(selectedCalender.getTime(), FORMAT_STR));
+                mResultHandler.handle(DateUtil.format(mCalender.getTime(), FORMAT_STR));
                 mClockDialog.dismiss();
             }
         });
@@ -97,13 +99,13 @@ public class ClockSelector {
         hour_pv.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
             public void onSelect(String text) {
-                selectedCalender.set(Calendar.HOUR, Integer.parseInt(text));
+                mCalender.set(Calendar.HOUR, Integer.parseInt(text));
             }
         });
         minute_pv.setOnSelectListener(new PickerView.onSelectListener() {
             @Override
             public void onSelect(String text) {
-                selectedCalender.set(Calendar.MINUTE, Integer.parseInt(text));
+                mCalender.set(Calendar.MINUTE, Integer.parseInt(text));
             }
         });
 
