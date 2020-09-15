@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="Gradle: com.zxn.time:time-utils:1.6.1@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fe0f9f654a74054f0f10cece9d346e/jetified-time-utils-1.6.1/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fe0f9f654a74054f0f10cece9d346e/jetified-time-utils-1.6.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fe0f9f654a74054f0f10cece9d346e/jetified-time-utils-1.6.1/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c8fe0f9f654a74054f0f10cece9d346e/jetified-time-utils-1.6.1/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zxn.time/time-utils/1.6.1/836173da03bc04a87d1bdfb44bf5ca5dab4f1a3f/time-utils-1.6.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zxn.time/time-utils/1.6.1/365e008533e909c445f0038dd0803fd0374b68eb/time-utils-1.6.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
