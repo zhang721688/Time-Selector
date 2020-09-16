@@ -21,12 +21,7 @@ implementation 'com.xm.zxn.timeselector:time-selector:1.0.2'
 `TimeSelector(Context context, ResultHandler resultHandler, String startDate, String endDate)`
 参数说明：ResultHandler为选取时间后的回调 startDate，endDate为时间控件的可选起始时间和结束时间。
 ```
-TimeSelector timeSelector = new TimeSelector(this, new TimeSelector.ResultHandler() {
-    @Override
-    public void handle(String time) {
-        Toast.makeText(getApplicationContext(), time, Toast.LENGTH_LONG).show();
-    }
-}, "2015-11-22 17:34", "2015-12-1 15:20");
+mTimeSelector = new TimeSelector(this, time -> Toast.makeText(getApplicationContext(), time, Toast.LENGTH_LONG).show(), "2015-11-22 17:34", "2015-12-1 15:20");
 ```
 
 构造2：
@@ -40,7 +35,7 @@ TimeSelector(Context context,
 ```
 >参数说明：传入workStartTime，workEndTime可选时间为起始时间和结束时间范围内的每日“时：分”的起始和结束时间，如限制可选时间为：朝9晚5。
 ```
-TimeSelector timeSelector = new TimeSelector(this, new TimeSelector.ResultHandler() {
+TimeSelector timeSelector = new TimeSelector(this, new ResultHandler() {
 	@Override
 	public void handle(String time) {
     	Toast.makeText(getApplicationContext(), time, Toast.LENGTH_LONG).show();
